@@ -15,8 +15,8 @@ class CreateDishesIngredientsTable extends Migration
     {
         Schema::create('dishes_ingredients', function (Blueprint $table) {
             $table->id();
-            $table->integer('dish_id');
-            $table->integer('ingredient_id');
+            $table->foreignId('dish_id')->constrained();
+            $table->foreignId('ingredient_id')->constrained();
             $table->timestamps();
         });
     }

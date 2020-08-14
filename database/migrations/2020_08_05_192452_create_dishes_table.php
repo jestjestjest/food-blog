@@ -14,9 +14,9 @@ class CreateDishesTable extends Migration
     public function up()
     {
         Schema::create('dishes', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->integer('kitchen_id');
+            $table->bigIncrements('id');
+            $table->string('name')->unique();
+            $table->foreignId('kitchen_id')->constrained();
             $table->string('description');
             $table->timestamps();
         });

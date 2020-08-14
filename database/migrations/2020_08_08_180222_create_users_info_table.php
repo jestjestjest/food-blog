@@ -14,15 +14,15 @@ class CreateUsersInfoTable extends Migration
     public function up()
     {
         Schema::create('users_info', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('nick_name');
-            $table->string('sex');
-            $table->string('age');
-            $table->string('birth_date');
-            $table->string('city_from');
-            $table->string('city_region_from');
+            $table->boolean('sex');
+            $table->integer('age');
+            $table->date('birth_date');
+            $table->foreignId('city_id')->constrained();
+            $table->foreignId('district_id')->constrained();
             $table->integer('house_number');
-            $table->string('street_name');
+            $table->foreignId('street')->constrained();
             $table->timestamps();
 
             $table->foreign('id')->references('id')->on('users');

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKitchensTable extends Migration
+class CreateKitchensUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateKitchensTable extends Migration
      */
     public function up()
     {
-        Schema::create('kitchens', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('country');
-            $table->string('description');
+        Schema::create('kitchens_users', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('kitchen_id')->constrained();
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateKitchensTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kitchens');
+        Schema::dropIfExists('kitchens_users');
     }
 }

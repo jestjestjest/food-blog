@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductionIngredientsPoolTable extends Migration
+class CreateStreetsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateProductionIngredientsPoolTable extends Migration
      */
     public function up()
     {
-        Schema::create('production_ingredients_pool', function (Blueprint $table) {
-            $table->id();
-            $table->integer('production_id');
-            $table->integer('ingredient_id');
+        Schema::create('streets', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateProductionIngredientsPoolTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('production_ingredients_pool');
+        Schema::dropIfExists('streets');
     }
 }
